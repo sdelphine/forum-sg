@@ -42,7 +42,7 @@ class CreateMessage extends Component {
                         value={this.state.message}
                         onChange={this.handleChange}
                     />
-                    <button type="submit" onClick={this.routeChange.bind(this)}>Submit</button>
+                    <button type="submit" onClick={this.routeChange.bind(this)}>📮Send</button>
                 </label>
             </div>
         );

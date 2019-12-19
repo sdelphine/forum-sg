@@ -38,9 +38,10 @@
 }
 
 div.message-box {
-  border: 1px solid red ;
+  border: 1px solid gray ;
+  border-radius: 25px;
   box-sizing: border-box;
-  width: 50%;
+  width: 75%;
   position: relative; /* postulat de départ */
   top: 0%;
   left: 50%;
@@ -54,11 +55,15 @@ div p.message {
   margin-left: 50px;
 }
 
-div p.message-info {
+div p.message-at {
   font-size: 10px;
   margin-left: 0px;
 }
 
+div p.message-from {
+  font-size: 10px;
+  margin-left: 0px;
+}
 label.form {
   position: absolute; /* postulat de départ */
   top: 0%;
@@ -67,3 +72,10 @@ label.form {
   display: grid;
   grid-template-columns: 500px;
 }
+
+textarea {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+

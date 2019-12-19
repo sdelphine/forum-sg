@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> render header component 1`] = `
+<Header>
+  <div>
+    <h1>
+      Header
+    </h1>
+  </div>
+</Header>
+`;
+
+exports[`<Home /> render message component 1`] = `
+<MessageList>
+  <Message
+    key="1"
+    message={
+      Object {
+        "at": "Today at 2:00 PM",
+        "from": "Toto",
+        "id": "1",
+        "message": "First message",
+        "topic": "legal",
+      }
+    }
+  >
+    <div
+      className="message-box"
+    >
+      <p
+        className="message-at"
+      >
+        At 
+        Today at 2:00 PM
+      </p>
+      <p
+        className="message-from"
+      >
+        From 
+        Toto
+      </p>
+      <p
+        className="message"
+      >
+        First message
+      </p>
+      <br />
+    </div>
+  </Message>
+  <Message
+    key="2"
+    message={
+      Object {
+        "at": "Today at 4:00 PM",
+        "from": "Titi",
+        "id": "2",
+        "message": "Second message",
+        "topic": "legal",
+      }
+    }
+  >
+    <div
+      className="message-box"
+    >
+      <p
+        className="message-at"
+      >
+        At 
+        Today at 4:00 PM
+      </p>
+      <p
+        className="message-from"
+      >
+        From 
+        Titi
+      </p>
+      <p
+        className="message"
+      >
+        Second message
+      </p>
+      <br />
+    </div>
+  </Message>
+  <Message
+    key="3"
+    message={
+      Object {
+        "at": "Tomorrow at 10:00 AM",
+        "from": "Toto",
+        "id": "3",
+        "message": "Third message",
+        "topic": "legal",
+      }
+    }
+  >
+    <div
+      className="message-box"
+    >
+      <p
+        className="message-at"
+      >
+        At 
+        Tomorrow at 10:00 AM
+      </p>
+      <p
+        className="message-from"
+      >
+        From 
+        Toto
+      </p>
+      <p
+        className="message"
+      >
+        Third message
+      </p>
+      <br />
+    </div>
+  </Message>
+</MessageList>
+`;
