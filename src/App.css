@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+div.message-box {
+  border: 1px solid red ;
+  box-sizing: border-box;
+  width: 50%;
+  position: relative; /* postulat de départ */
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  margin: 10px
+}
+
+div p.message {
+  text-align: left;
+  line-height: 50px;
+  margin-left: 50px;
+}
+
+div p.message-info {
+  font-size: 10px;
+  margin-left: 0px;
+}
+
+label.form {
+  position: absolute; /* postulat de départ */
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  display: grid;
+  grid-template-columns: 500px;
+}
