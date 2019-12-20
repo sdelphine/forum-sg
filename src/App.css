@@ -37,6 +37,10 @@
   }
 }
 
+h1 {
+  text-transform: capitalize;
+}
+
 div.message-box {
   border: 1px solid gray ;
   border-radius: 25px;
@@ -57,14 +61,16 @@ div p.message {
 
 div p.message-at {
   font-size: 10px;
+  line-height: 1px;
   margin-left: 0px;
 }
 
 div p.message-from {
-  font-size: 10px;
+  font-size: 15px;
+  line-height: 0px;
   margin-left: 0px;
 }
-label.form {
+div.form {
   position: absolute; /* postulat de départ */
   top: 0%;
   left: 50%;
@@ -73,9 +79,15 @@ label.form {
   grid-template-columns: 500px;
 }
 
+div.form-from {
+  display: flex;
+  grid-template-columns: 500px;
+}
+
 textarea {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  height: 200px;
 }
 
