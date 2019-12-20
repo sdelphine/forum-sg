@@ -1,26 +1,24 @@
-import { shallow } from 'enzyme';
+import { render } from 'enzyme';
 import Message from '../components/Message';
 import React from 'react';
+import { fakeMessage } from '../lib/fakeUtils'
 
-const fakeMessage = {
-    id: '1',
-    topic: 'legal',
-    message: 'First message',
-    from: 'Toto',
-    at: 'Today at 2:00 PM'
-}
+describe('<Message /> component', () => {
+    it('should render information about creator', () => {
+        const wrapper = render(<Message message={fakeMessage} />)
 
-const wrapper = shallow(<Message message={fakeMessage} />)
-describe('<Message />', () => {
-    it('renders information about from', () => {
         const part = wrapper.find('.message-from')
         expect(part.text()).toBe(`From ${fakeMessage.from}`)
     })
-    it('renders information about at', () => {
+    it('should render information about creation date', () => {
+        const wrapper = render(<Message message={fakeMessage} />)
+
         const part = wrapper.find('.message-at')
         expect(part.text()).toBe(`At ${fakeMessage.at}`)
     })
-    it('renders information about message', () => {
+    it('should render information about message content', () => {
+        const wrapper = render(<Message message={fakeMessage} />)
+
         const part = wrapper.find('.message')
         expect(part.text()).toBe(fakeMessage.message)
     })
