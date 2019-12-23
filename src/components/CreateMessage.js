@@ -12,7 +12,7 @@ function checkMessage(message, sender, func) {
 }
 
 // TODO when submit, add datetime
-export default function CreateMessage( { topic, onCreateMessage } ) {
+export default function CreateMessage({ topic, onCreateMessage } ) {
     const [message, handleMessageChange] = useState("")
     const [sender, changeSender] = useState("")
     onCreateMessage = onCreateMessage || (() => {})
