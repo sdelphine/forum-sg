@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Topic from './components/Topic';
+import Topic from './topics/Topic';
 import {
   Route,
   Switch,
 } from 'react-router-dom';
-import CreateMessage from './components/CreateMessage';
-import Home from './components/Home';
+import CreateMessage from './messages/CreateMessage';
+import Home from './misc/Home';
 
 function App() {
   return (

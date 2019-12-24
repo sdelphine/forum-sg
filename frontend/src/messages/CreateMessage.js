@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../components/Header';
+import Header from '../misc/Header';
 
 function randomId() {     
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);

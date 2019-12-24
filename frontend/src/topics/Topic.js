@@ -1,11 +1,12 @@
 import React from 'react';
-import Header from './Header';
-import MessageList from './MessageList';
+import Header from '../misc/Header';
+import MessageList from '../messages/MessageList';
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav';
+import Nav from '../misc/Nav';
 import { fakeMessageList } from '../lib/fakeUtils';
 
 export default function Topic({ topic } ) {
+
     const messageListFiltered = fakeMessageList.filter(message => message.topic === topic)
 
     return (
