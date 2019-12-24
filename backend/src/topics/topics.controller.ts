@@ -1,9 +1,9 @@
-import { Controller, Get } from "@nestjs/common";
-import { Topics } from "./topic.model";
-import { TopicsService } from "./topics.service";
+import { Controller, Get } from '@nestjs/common';
+import { Topics } from './topics.model';
+import { TopicsService } from './topics.service';
 
 @Controller({
-    path: "/topics"
+    path: '/topics',
 })
 export class TopicsController {
 

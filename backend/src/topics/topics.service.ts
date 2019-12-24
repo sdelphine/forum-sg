@@ -1,17 +1,17 @@
-import { Injectable } from "@nestjs/common";
-import { Topics } from "./topic.model";
+import { Injectable } from '@nestjs/common';
+import { Topics } from './topics.model';
 
 @Injectable()
 export class TopicsService {
-    private topicTemplate = [
+    private topics = [
         { id: 'ERERER', title: 'Legal', slug: 'legal' },
-        { id: 'SDFDFSDF', title: 'Economy', slug: 'economy' }
+        { id: 'SDFDFSDF', title: 'Economy', slug: 'economy' },
     ];
-    
+
     findAll(): Topics {
-        return this.topicTemplate;
+        return this.topics;
     }
     exists(topicId: string): boolean {
-        return Boolean(this.topicTemplate.find(topic => topic.id === topicId))
+        return Boolean(this.topics.find(topic => topic.id === topicId));
     }
 }

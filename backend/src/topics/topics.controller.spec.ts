@@ -16,7 +16,7 @@ describe('Topics controller', () => {
         const service = module.get(TopicsService);
         const topics = [
             { id: 'ERERER', title: 'Legal', slug: 'legal' },
-            { id: 'SDFDFSDF', title: 'Economy', slug: 'economy' }
+            { id: 'SDFDFSDF', title: 'Economy', slug: 'economy' },
         ];
         spyOn(service, 'findAll').and.returnValue(topics);
 
