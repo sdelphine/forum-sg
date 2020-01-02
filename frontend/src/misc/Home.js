@@ -7,11 +7,11 @@ export default function Home() {
     const topicsList = useStoreState(states => states.topicsModel.topics.data)
     const fetchTopics = useStoreActions(actions => actions.topicsModel.topics.list);
 
-    useEffect(() => { fetchTopics() }, [])
+    useEffect(() => { fetchTopics() })
 
     return (
         <div className="container">
-            <img src={Logo}/>
+            <img src={Logo} alt='Logo'/>
             <p className='home'>
                 Please select a topic
             </p>
