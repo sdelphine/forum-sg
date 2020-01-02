@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Nav from './Nav';
+import { useStoreState, useStoreActions } from 'easy-peasy';
+import Logo from'../img/forum.jpg';
 
 export default function Home() {
+    const topicsList = useStoreState(states => states.topicsModel.topics.data)
+    const fetchTopics = useStoreActions(actions => actions.topicsModel.topics.list);
+
+    useEffect(() => { fetchTopics() }, [])
+
     return (
-        <div className="navbar">
-            <Nav />
+        <div className="container">
+            <img src={Logo}/>
+            <p className='home'>
+                Please select a topic
+            </p>
+            <div className="navbar-home">
+                 <Nav topicsList={topicsList}/>
+            </div>
         </div>
     )
 }
