@@ -1,14 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { fakeTopicList } from '../lib/fakeUtils';
-// import TopicsService from '../services/TopicsService';
 
-export default function Nav() {
-
+export default function Nav({ topicsList }) {
     return (
-        [...fakeTopicList].map((topic, i) => (
-            <Link to={`/${topic}`} key={i}>{topic}</Link>
-        ))
+        [...topicsList].map((topic, i) => {
+            return <Link to={`/${topic.slug}`} key={i+1}>{topic.title}</Link>
+        })
     )
 };
-
