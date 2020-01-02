@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query } from '@nestjs/common';
 import { Messages, Message, MessageCreationRequest } from './messages.models';
 import { MessagesService } from './messages.service';
 
@@ -10,7 +10,7 @@ export class MessagesController {
     constructor(private readonly messagesService: MessagesService) {}
 
     @Get()
-    findAllByTopic(topicId: string): Messages {
+    findAllByTopic(@Query('topicId') topicId: string): Messages {
         return this.messagesService.findAllByTopic(topicId);
     }
 
