@@ -8,7 +8,7 @@ export default function Home() {
     const fetchTopics = useStoreActions(actions => actions.topicsModel.topics.list);
 
     useEffect(() => { fetchTopics() })
-
+    const topicsListFiltered = topicsList.filter(topic => topic.slug !== '')
     return (
         <div className="container">
             <img src={Logo} alt='Logo'/>
@@ -16,7 +16,7 @@ export default function Home() {
                 Please select a topic
             </p>
             <div className="navbar-home">
-                 <Nav topicsList={topicsList}/>
+                 <Nav topicsList={topicsListFiltered}/>
             </div>
         </div>
     )
