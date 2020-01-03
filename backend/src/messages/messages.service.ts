@@ -35,14 +35,19 @@ export class MessagesService {
     }
 
     create(messageCreationRequest: MessageCreationRequest): Message {
-        // Add condition if topicId is Home id
-        if (!this.topicsService.exists(messageCreationRequest.topicId)) {
+        const topicsList = this.topicsService.topics;
+        const topicsIdList = topicsList.map(topic => topic.id);
+        console.log(topicsIdList)
+        console.log(messageCreationRequest.message)
+        console.log(messageCreationRequest.topicId)
+        if (!topicsIdList.includes(messageCreationRequest.topicId)) {
             throw new Error('Topic does not exist');
         }
+        // Add condition if topicId is Home id
         if (!messageCreationRequest.message.startsWith('Bonjour,')) {
             throw new Error('Message is invalid');
         }
-
+        console.log(messageCreationRequest)
         const message = {
             id: '',
             ...messageCreationRequest,

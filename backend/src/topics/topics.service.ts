@@ -3,7 +3,7 @@ import { Topics } from './topics.model';
 
 @Injectable()
 export class TopicsService {
-    private topics = [
+    public topics = [
         { id: 'AZERS', title: 'Home', slug: '' },
         { id: 'ERERER', title: 'Legal', slug: 'legal' },
         { id: 'SDFDFSDF', title: 'Economy', slug: 'economy' },
