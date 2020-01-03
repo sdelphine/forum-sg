@@ -69,8 +69,13 @@ div.navbar-home {
   right: 30%;
   transform: skew(-10deg);
 }
+
 a {
   text-decoration: none;
+  text-transform: capitalize;
+}
+a.back-link {
+  font-size: 25px;
 }
 a:link{color:inherit}
 a:active{color:rgb(99, 63, 63)}
@@ -120,35 +125,41 @@ div p.message-from {
 }
 
 div.form {
-  position: absolute; /* postulat de départ */
-  top: 15%;
+  /* top: 15%;
   left: 50%;
-  transform: translate(-50%, 0%);
+  height: 50%; */
+  /* transform: translate(-50%, 0%);
   display: grid;
   grid-template-columns: 500px;
-  border-radius: 25px;
+  border-radius: 25px; */
 }
 
 span.from-text {
-  margin-right: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 img {
   width: 75%;
 }
+div.form {
+  /* display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center; */
+}
 
 div.form-from {
-  font-size: 500%;
-  display: flex;
+  font-size: 200%;
 }
 select.select-from {
   font-size: 100%;
-  display: flex;
-  bottom: 1%;
+  border-radius: 5px;
 }
-button.send {
-  font-size: 100%;
-  display: flex;
+button.button-send {
+  font-size: 200%;
+  width: 25%;
+
 }
 div .messageLink{
   font-size: 250%;
@@ -163,14 +174,10 @@ div .messageLink:hover {
 }
 
 textarea {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  height: 500%;
-  width: 500%;
-  transform: translate(-40%, 0%);
-  font-size: 400%;
-  background-color: #cacaca;
+  border-radius: 15px;
+  height: 400px;
+  width: 50%;
+  font-size: 200%;
 }
 
 div.navbar {

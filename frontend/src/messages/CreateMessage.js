@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../misc/Header';
+import { Link } from 'react-router-dom';
 
 function randomId() {     
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
@@ -18,11 +19,12 @@ export default function CreateMessage({ topic, onCreateMessage } ) {
     onCreateMessage = onCreateMessage || (() => {})
 
     return (
-        <div className="sqd">
+        <div>
             <Header topic={topic} />
-            <div className="form">
+            <Link className='back-link' to={`/${topic}`}>↩ Back</Link>
+            <div className="form">  
                 <div className="form-from">
-                    <span className="from-text">From</span>
+                    <span className="from-text"><br/>From</span>
                     <select className="select-from" name="from" 
                         id="from-select" 
                         onChange={(event) => changeSender(event.target.value)}>
@@ -31,21 +33,25 @@ export default function CreateMessage({ topic, onCreateMessage } ) {
                         <option value="user2">User2</option>
                     </select>
                 </div>
-                <textarea
-                    type="text"
-                    id="message"
-                    name="message"
-                    required
-                    placeholder="Write your message"
-                    value={message}
-                    onChange={event => handleMessageChange(event.target.value)}
-                />
-                <button
-                    className="button-send"
-                    type="button"
-                    onClick={() => checkMessage(message, sender, (message) => onCreateMessage(message))}>
-                    <span role="img" aria-label="send">📮</span>Send
-                </button>
+                <div>
+                    <textarea
+                        type="text"
+                        id="message"
+                        name="message"
+                        required
+                        placeholder="Write your message"
+                        value={message}
+                        onChange={event => handleMessageChange(event.target.value)}
+                    />
+                </div>
+                <div>
+                    <button
+                        className="button-send"
+                        type="button"
+                        onClick={() => checkMessage(message, sender, (message) => onCreateMessage(message))}>
+                        <span role="img" aria-label="send">📮</span>Send
+                    </button>
+                </div>
             </div>
         </div>
     );
