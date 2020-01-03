@@ -18,9 +18,7 @@ function App() {
           <Route exact path={"/"} render={() => <Home />}/>
           <Route exact path={"/:topic"} render={(props) => <Topic { ...props.match.params } />}/>
           <Route exact path={"/:topic/newMessage"} render={
-            (props) => <CreateMessage
-              { ...props.match.params }
-              onCreateMessage={(message) => console.log(message)} />
+            (props) => <CreateMessage { ...props.match.params } />
             }
           />
         </Switch>

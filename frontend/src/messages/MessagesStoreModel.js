@@ -16,13 +16,15 @@ export const messagesModel = {
             state.data = payload
         }),
         // Add a message
-        addToTopic: thunk(async (actions, topicId, message) => {
+        addToTopic: thunk(async (actions, {id, creator, topicId, message}) => {
             const service = new MessagesService()
-            const data = await service.pushNewMessage(message)
+            const data = await service.pushNewMessage({
+                id: id, message: message,
+                creator: creator, topicId: topicId})
             actions.add({topicId, data})
         }),
         add: action((state, {topicId, payload}) => {
-            state.data[topicId].push(payload);
+            state.data.push(payload);
         }),
     }
 }
