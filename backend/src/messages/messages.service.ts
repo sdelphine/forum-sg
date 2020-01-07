@@ -2,6 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { Messages, MessageCreationRequest, Message } from './messages.models';
 import { TopicsService } from '../topics/topics.service';
 
+function randomId() {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+}
+
 @Injectable()
 export class MessagesService {
 
@@ -30,26 +34,38 @@ export class MessagesService {
 
     constructor(private readonly topicsService: TopicsService) {}
 
-    findAllByTopic(topicId: string): Messages {
-        return this.messages.filter(message => message.topicId === topicId);
+    findAllBy(topicId: string, slug: string): Messages {
+        if (topicId) {
+            return this.messages.filter(message => message.topicId === topicId);
+        }
+        if (slug) {
+            const topic = this.topicsService.findBySlug(slug);
+            if (!topic) {
+                throw new Error('topic not found');
+            }
+
+            return this.messages.filter(message => message.topicId === topic.id);
+        }
+
+        throw new Error('should supply at least one matching parameter');
     }
 
     create(messageCreationRequest: MessageCreationRequest): Message {
         const topicsList = this.topicsService.topics;
         const topicsIdList = topicsList.map(topic => topic.id);
-        console.log(topicsIdList)
-        console.log(messageCreationRequest.message)
-        console.log(messageCreationRequest.topicId)
+        const homeTopicsId = topicsList.filter(topic => topic.title === 'Home')[0].id;
         if (!topicsIdList.includes(messageCreationRequest.topicId)) {
             throw new Error('Topic does not exist');
         }
-        // Add condition if topicId is Home id
-        if (!messageCreationRequest.message.startsWith('Bonjour,')) {
+        if (messageCreationRequest.topicId === homeTopicsId) {
+            throw new Error('Operation not permit: add message to home topic')
+        }
+        if (!messageCreationRequest.message.startsWith('Bonjour')) {
             throw new Error('Message is invalid');
         }
-        console.log(messageCreationRequest)
+
         const message = {
-            id: '',
+            id: randomId(),
             ...messageCreationRequest,
             createdAt: new Date(),
         };

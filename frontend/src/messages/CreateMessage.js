@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../misc/Header';
 import { Link } from 'react-router-dom';
-import { useStoreState, useStoreActions } from 'easy-peasy';
+import { useStoreState } from 'easy-peasy';
 
-function randomId() {     
-    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+function messageIsValid(message, sender) {
+    return message && message.startsWith('Bonjour') && sender;
 }
 
-function checkMessage(message, sender, topicId, onCreateMessage) {
-    if (message && message.startsWith('Bonjour') && sender) {
-        onCreateMessage({
-            id: randomId(), topicId: topicId,
-            message: message, sender: sender
-        })
-    }
-}
-
-// TODO when submit, add datetime
 export default function CreateMessage({ topic, onCreateMessage } ) {
     const [message, handleMessageChange] = useState("")
     const [sender, changeSender] = useState("")
@@ -24,11 +15,11 @@ export default function CreateMessage({ topic, onCreateMessage } ) {
     const topicsList = useStoreState(states => states.topicsModel.topics.data)
     const topicId = topicsList.filter(topicTmp => topicTmp.slug === topic)[0].id
 
-    const messagesList = useStoreState(states => states.messagesModel.messages.data)
-    const fetchMessages = useStoreActions(actions => actions.messagesModel.messages.getByTopicId)
-    useEffect(() => { fetchMessages(topicId) }, [messagesList])
-
-    const pushMessage = useStoreActions(actions => actions.messagesModel.messages.addToTopic)
+    const onSendMessage = () => {
+        if (messageIsValid(message, sender)) {
+            onCreateMessage({ creator: sender, message: message, topicId: topicId });
+        }
+    }
 
     return (
         <div>
@@ -60,13 +51,11 @@ export default function CreateMessage({ topic, onCreateMessage } ) {
                     <button
                         className="button-send"
                         type="button"
-                        onClick={() => checkMessage(message, sender, topicId, 
-                            () => pushMessage({ id: randomId(), message, creator: sender, topicId}))}>
-                        <span role="img" aria-label="send">📮</span>Send
+                        onClick={() => onSendMessage()}>
+                            <span role="img" aria-label="send">📮</span>Send
                     </button>
                 </div>
             </div>
         </div>
     );
-
 }

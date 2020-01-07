@@ -1,6 +1,8 @@
 import { thunk, action } from 'easy-peasy';
 import MessagesService from './MessagesService';
 
+const service = new MessagesService()
+
 export const messagesModel = {
     messages: {
         // Data Structure
@@ -8,18 +10,20 @@ export const messagesModel = {
         // Actions
         // Get message by topic ID
         getByTopicId: thunk(async (actions, topicId) => {
-            const service = new MessagesService()
             const data = await service.getMessagesByTopicId(topicId)
+            actions.setData(data)
+        }),
+        getByTopicSlug: thunk(async (actions, topicSlug) => {
+            const data = await service.getMessagesByTopicSlug(topicSlug)
             actions.setData(data)
         }),
         setData: action((state, payload) => {
             state.data = payload
         }),
         // Add a message
-        addToTopic: thunk(async (actions, {id, creator, topicId, message}) => {
-            const service = new MessagesService()
+        addToTopic: thunk(async (actions, {creator, topicId, message}) => {
             const data = await service.pushNewMessage({
-                id: id, message: message,
+                message: message,
                 creator: creator, topicId: topicId})
             actions.add({topicId, data})
         }),

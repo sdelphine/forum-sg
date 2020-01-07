@@ -5,23 +5,25 @@ import { Link } from 'react-router-dom';
 import Nav from '../misc/Nav';
 import { useStoreState, useStoreActions } from 'easy-peasy';
 
-export default function Topic({ topic } ) {
+export default function Topic({ topic }) {
 
-    const topicsList = useStoreState(states => states.topicsModel.topics.data)
-    const topicId = topicsList.filter(topicTmp => topicTmp.slug === topic)[0].id
+    const topicsList = useStoreState(states => states.topicsModel.topics.data);
+    const messagesList = useStoreState(states => states.messagesModel.messages.data);
+    const fetchTopics = useStoreActions(actions => actions.topicsModel.topics.list);
+    const fetchMessages = useStoreActions(actions => actions.messagesModel.messages.getByTopicSlug);
 
-    const messagesList = useStoreState(states => states.messagesModel.messages.data)
-    const fetchMessages = useStoreActions(actions => actions.messagesModel.messages.getByTopicId) 
-    useEffect(() => { fetchMessages(topicId) }, [messagesList])
-    
+    useEffect(() => { fetchTopics(); fetchMessages(topic); }, [])
+
     return (
         <div className='topic'>
             <div className="navbar">
-                <Nav topicsList={topicsList}/>
+                <Nav topicsList={topicsList} />
             </div>
-            <Header topic={topic}/>
-            <MessageList messageList={messagesList}/>
-            <Link className="messageLink" to={`/${topic}/newMessage`}><span role="img" aria-label="mail">📧</span>Add a new message</Link>
+            <Header topic={topic} />
+            <MessageList messageList={messagesList} />
+            <Link className="messageLink" to={`/${topic}/newMessage`}>
+                <span role="img" aria-label="mail">📧</span>Add a new message
+            </Link>
         </div>
     )
 }

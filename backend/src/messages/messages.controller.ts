@@ -10,8 +10,8 @@ export class MessagesController {
     constructor(private readonly messagesService: MessagesService) {}
 
     @Get()
-    findAllByTopic(@Query('topicId') topicId: string): Messages {
-        return this.messagesService.findAllByTopic(topicId);
+    findAllByTopic(@Query('topicId') topicId: string, @Query('slug') slug: string): Messages {
+        return this.messagesService.findAllBy(topicId, slug);
     }
 
     @Post()

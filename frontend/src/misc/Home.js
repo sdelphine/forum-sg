@@ -7,7 +7,7 @@ export default function Home() {
     const topicsList = useStoreState(states => states.topicsModel.topics.data)
     const fetchTopics = useStoreActions(actions => actions.topicsModel.topics.list);
 
-    useEffect(() => { fetchTopics() })
+    useEffect(() => { fetchTopics() }, [])
     const topicsListFiltered = topicsList.filter(topic => topic.slug !== '')
     return (
         <div className="container">
