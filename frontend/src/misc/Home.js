@@ -16,7 +16,7 @@ export default function Home() {
                 Please select a topic
             </p>
             <div className="navbar-home">
-                 <Nav topicsList={topicsListFiltered}/>
+                <Nav topicsList={topicsListFiltered}/>
             </div>
         </div>
     )

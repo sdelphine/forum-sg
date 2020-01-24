@@ -12,7 +12,10 @@ export default function Topic({ topic }) {
     const fetchTopics = useStoreActions(actions => actions.topicsModel.topics.list);
     const fetchMessages = useStoreActions(actions => actions.messagesModel.messages.getByTopicSlug);
 
-    useEffect(() => { fetchTopics(); fetchMessages(topic); }, [])
+    useEffect(() => {
+        fetchTopics()
+        fetchMessages(topic)
+    }, [topic])
 
     return (
         <div className='topic'>

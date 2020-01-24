@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import MessageList from '../components/MessageList';
+import MessageList from '../messages/MessageList';
 import React from 'react';
 import { fakeMessageList } from '../lib/fakeUtils'
 

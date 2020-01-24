@@ -1,5 +1,5 @@
 import { render } from 'enzyme';
-import Header from '../components/Header';
+import Header from '../misc/Header';
 import React from 'react';
 import { fakeTopic } from '../lib/fakeUtils'
 
@@ -8,7 +8,7 @@ describe('<Header /> component', () => {
     it('should render header title', () => {
         const wrapper = render(<Header topic={fakeTopic}/>)
 
-        const part = wrapper.find('h1')
+        const part = wrapper.find('p')
         expect(part.text()).toBe(`Topic: ${fakeTopic}`)
     });
 });

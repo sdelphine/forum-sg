@@ -9,23 +9,28 @@ import CreateMessagePage from './messages/CreateMessagePage';
 import Home from './misc/Home';
 import { store } from './store/storeModel';
 import { StoreProvider } from 'easy-peasy';
+// import { persistStore } from "redux-persist";
+// import { PersistGate } from "redux-persist/integration/react";
 
-// TODO Persist State : https://codesandbox.io/s/9j2wx1kw4o
+// const persistor = persistStore(store)
+
 function App() {
   return (
-    <StoreProvider store={store}>
-      <div className="App">
-        <Switch>
-          <Route exact path={"/"} render={() => <Home />} />
-          <Route exact path={"/:topic"} render={
-            (props) => <Topic {...props.match.params} />} />
-          <Route exact path={"/:topic/newMessage"} render={
-            (props) => <CreateMessagePage {...props.match.params} />
-          }
-          />
-        </Switch>
-      </div>
-    </StoreProvider>
+    // <PersistGate loading={<div>Loading</div>} persistor={persistor}>
+      <StoreProvider store={store}>
+        <div className="App">
+          <Switch>
+            <Route exact path={"/"} render={() => <Home />} />
+            <Route exact path={"/:topic"} render={
+              (props) => <Topic {...props.match.params} />} />
+            <Route exact path={"/:topic/newMessage"} render={
+              (props) => <CreateMessagePage {...props.match.params} />
+            }
+            />
+          </Switch>
+        </div>
+      </StoreProvider>
+    // </PersistGate>
   );
 }
 

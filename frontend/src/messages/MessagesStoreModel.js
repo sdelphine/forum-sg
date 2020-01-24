@@ -27,8 +27,8 @@ export const messagesModel = {
                 creator: creator, topicId: topicId})
             actions.add({topicId, data})
         }),
-        add: action((state, {topicId, payload}) => {
-            state.data.push(payload);
+        add: action((state, {data}) => {
+            state.data.push(data);
         }),
     }
 }
