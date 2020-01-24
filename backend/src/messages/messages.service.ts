@@ -53,7 +53,7 @@ export class MessagesService {
     create(messageCreationRequest: MessageCreationRequest): Message {
         const topicsList = this.topicsService.topics;
         const topicsIdList = topicsList.map(topic => topic.id);
-        const homeTopicsId = topicsList.filter(topic => topic.title === 'Home')[0].id;
+        const homeTopicsId = topicsList.find(topic => topic.title === 'Home').id;
         if (!topicsIdList.includes(messageCreationRequest.topicId)) {
             throw new Error('Topic does not exist');
         }

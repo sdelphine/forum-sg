@@ -19,11 +19,28 @@ describe('Message controller', () => {
         const controller = module.get(MessagesController);
         const service = module.get(MessagesService);
         const messages = [
-            { id: 'SCQDSQ', message: 'ZVCER', topicId: 'ERERER', creator: 'User2' },
+            {
+                id: 'SCQDSQ', message: 'ZVCER', slug: 'legal',
+                topicId: 'ERERER', creator: 'User2',
+            },
         ];
 
-        spyOn(service, 'findAllByTopic').and.returnValue(messages);
-        expect(controller.findAllByTopic('ERERER')).toEqual(messages);
+        spyOn(service, 'findAllBy').and.returnValue(messages);
+        expect(controller.findAllByTopic('ERERER', null)).toEqual(messages);
+    });
+    it('should return the list of messages by topic slug', () => {
+        const controller = module.get(MessagesController);
+        const service = module.get(MessagesService);
+
+        const messages = [
+            {
+                id: 'SCQDSQ', message: 'ZVCER', slug: 'legal',
+                topicId: 'ERERER', creator: 'User2',
+            },
+        ];
+
+        spyOn(service, 'findAllBy').and.returnValue(messages);
+        expect(controller.findAllByTopic(null, 'legal')).toEqual(messages);
     });
 
     it('should allow creating a message', () => {
@@ -32,7 +49,9 @@ describe('Message controller', () => {
 
         spyOn(service, 'create');
 
-        const messageCreationRequest = { topicId: 'ERERER', message: 'Coucou', creator: 'User15' };
+        const messageCreationRequest = {
+            topicId: 'ERERER', message: 'Coucou', creator: 'User15',
+        };
         controller.create(messageCreationRequest);
 
         expect(service.create).toHaveBeenCalledWith(messageCreationRequest);
